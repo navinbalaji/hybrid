@@ -3,6 +3,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
+import Loading from "@/component/Loading";
 
 interface Post {
   title: string;
@@ -25,7 +26,7 @@ const PostDetail = (): JSX.Element => {
     const fetchPostDetails = async () => {
       setLoading(true);
       try {
-        const response = await axios.get<Post>(`http://hn.algolia.com/api/v1/items/${id}`);
+        const response = await axios.get<Post>(`https://hn.algolia.com/api/v1/items/${id}`);
         console.log(response);
         setPost(response.data);
       } catch (err) {
@@ -67,11 +68,7 @@ const PostDetail = (): JSX.Element => {
         Go Back
       </button>
 
-      {loading && (
-        <div className="flex items-center justify-center mb-4">
-          <div className="w-8 h-8 border-4 border-blue-500 rounded-full animate-spin"></div>
-        </div>
-      )}
+      {loading && <Loading />}
       {error && <p className="text-red-600">{error}</p>}
 
       <motion.h2 className="text-2xl font-semibold" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>

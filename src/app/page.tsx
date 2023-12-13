@@ -29,7 +29,7 @@ const Home = (): JSX.Element => {
   const handleSearch = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://hn.algolia.com/api/v1/search?query=${query}`);
+      const response = await axios.get(`https://hn.algolia.com/api/v1/search?query=${query}`);
       setSearchResults(response.data.hits);
     } catch (err) {
       setError("Failed to fetch results");

@@ -99,5 +99,3 @@ const PostDetail = (): JSX.Element => {
 };
 
 export default PostDetail;
-
-//https://vm-2dfcef88-0773-4c6f-9bf3-7064aaec468c-8000.in-vmprovider.projects.hrcdn.net
